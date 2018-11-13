@@ -1,0 +1,24 @@
+h1{
+    text-align: center ;
+
+}
+
+
+
+#resultat{
+   position: relative;
+}
+
+@keyframes dd {
+
+    0%{
+        transform: rotateX(180deg);
+    color: white}
+    50%{color: white;}
+    51%{transform: rotateX(90deg);
+        color: black}
+   100%{transform: rotateX(0deg);
+    color: black}
+
+
+}

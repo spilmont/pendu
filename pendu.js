@@ -1,5 +1,6 @@
 var Mots= ["ordinateur","clavier","ecran"];
-
+var vie = 10;
+var test =0;
 
 
     // genere un mot aleatoirement
@@ -35,10 +36,11 @@ var Mots= ["ordinateur","clavier","ecran"];
       lettreT.id= "lettre"+i;
       lettreT.style.border = "outset red";
       lettreT.style.display ="inline-block";
-      lettreT.style.width =100+"px";
-      lettreT.style.height =100+"px";
+      lettreT.style.width =80+"px";
+      lettreT.style.height =80+"px";
       lettreT.style.fontSize = 4+"em";
-      lettreT.style.paddingLeft=50+"px"
+      lettreT.style.paddingLeft=50+"px";
+
 
 
      var temp = document.getElementById("lettre");
@@ -47,17 +49,48 @@ var Mots= ["ordinateur","clavier","ecran"];
 
   }}
 
+
+
   function lettretrouvee(){
 
         var user = document.getElementById("text").value;
+        document.getElementById('vie').innerText = "vie: "+ vie;
+
         for (var i = 0;i<motChoisis.length;i++){
 
             if (user == motChoisis[i]){
 
                 document.getElementById("lettre" + i).innerHTML = motChoisis[i];
+                document.getElementById("lettre" + i).style.border="inset red";
+                document.getElementById('lettre'+i).style.animation ="dd 2s";
+                document.getElementById('info').innerHTML ="vous avez trouver la lettre : "+user;
+                test++;
+
             }
-  }
-  }
+
+
+        }
+                  if(test ===0){
+                      vie--;
+                  }
+
+            }
+
+
+
+            document.getElementById('vie').innerHTML="vie: "+vie;
+
+
+      if(vie < 0) {
+          document.getElementById('vie').innerHTML = "vie: 0";
+          document.getElementById('WinorLose').innerHTML = "vous avez perdu le mot etait :" + motChoisis;
+          document.getElementById('text').style.visibility = "hidden";
+      }
+
+
+
+
+
 
 comparerLettre();
 
@@ -65,5 +98,6 @@ comparerLettre();
 
         entrerLettre();
         lettretrouvee();
+
 
 });
