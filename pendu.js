@@ -69,26 +69,28 @@ var test =0;
             }
 
 
+
         }
-                  if(test ===0){
-                      vie--;
-                  }
-
-            }
-
-
-
-            document.getElementById('vie').innerHTML="vie: "+vie;
-
-
+      if(test ==0){
+          vie--;
+      }
       if(vie < 0) {
           document.getElementById('vie').innerHTML = "vie: 0";
           document.getElementById('WinorLose').innerHTML = "vous avez perdu le mot etait :" + motChoisis;
           document.getElementById('text').style.visibility = "hidden";
+    }
+
+
+
+
+
+
+
+
       }
 
 
-
+document.getElementById('vie').innerHTML="vie: "+vie;
 
 
 
@@ -101,3 +103,25 @@ comparerLettre();
 
 
 });
+
+
+ /*   document.getElementById('facile').addEventListener("click", function () {
+
+
+
+
+});
+
+    document.getElementById('moyen').addEventListener("click", function () {
+
+
+
+
+});
+
+    document.getElementById('difficile').addEventListener("click", function () {
+
+
+
+
+});*/
