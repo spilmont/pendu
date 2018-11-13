@@ -64,15 +64,25 @@ var test =0;
                 document.getElementById("lettre" + i).style.border="inset red";
                 document.getElementById('lettre'+i).style.animation ="dd 2s";
                 document.getElementById('info').innerHTML ="vous avez trouver la lettre : "+user;
+
                 test++;
+                console.log(test);
+            }
+            else{
+
+                document.getElementById('info').innerHTML ="la lettre " + user+" ne fais partis du mot";
 
             }
 
 
 
         }
-      if(test ==0){
+      if(test == 0){
           vie--;
+      }
+      else
+      {
+          test=0;
       }
       if(vie < 0) {
           document.getElementById('vie').innerHTML = "vie: 0";
@@ -90,7 +100,7 @@ var test =0;
       }
 
 
-document.getElementById('vie').innerHTML="vie: "+vie;
+
 
 
 
