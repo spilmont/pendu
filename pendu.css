@@ -4,21 +4,26 @@ h1{
 }
 
 
-
 #resultat{
-   position: relative;
+    position: relative;
+
 }
 
 @keyframes dd {
 
     0%{
         transform: rotateY(180deg);
-    color: white}
-    50%{color: white;}
-    51%{transform: rotateX(90deg);
+        background-image: url("index.png");
+        background-color:cyan}
+    50%{
+        background-color: cyan;
+        background-image: url("index.png")}
+    51%{background-image: none;
+        transform: rotateX(90deg);
+        color: black;
+        background-color: white}
+    100%{transform: rotateY(0deg);
         color: black}
-   100%{transform: rotateY(0deg);
-    color: black}
 
 
 }
