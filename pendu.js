@@ -3,125 +3,134 @@ var vie = 10;
 var test =0;
 
 
-    // genere un mot aleatoirement
-    var motsAlea = Math.random()*Mots.length;
-    motsAlea = Math.floor(motsAlea);
-    motChoisis = Mots[motsAlea];
+// genere un mot aleatoirement
+var motsAlea = Math.random()*Mots.length;
+motsAlea = Math.floor(motsAlea);
+motChoisis = Mots[motsAlea];
 
 
-    console.log(motChoisis);
-    function entrerLettre(){
+console.log(motChoisis);
+function entrerLettre(){
 
-        var user = document.getElementById('text').value;
+    var user = document.getElementById('text').value;
 
-        if(user.length > 0 && user.length <2){
+    if(user.length > 0 && user.length <2){
 
-            user;
+        user;
+    }
+    else{
+        alert("entrer une seul lettre");
+    }
+
+}
+
+function comparerLettre() {
+
+
+
+    for(var i =0; i< motChoisis.length;i++){
+
+        var lettreT=document.createElement('span');
+        document.getElementById('resultat').appendChild(lettreT);
+        lettreT.id= "lettre"+i;
+        lettreT.style.backgroundColor="red";
+        lettreT.style.border = "outset red";
+        lettreT.style.display ="inline-block";
+        lettreT.style.width =80+"px";
+        lettreT.style.height =80+"px";
+        lettreT.style.fontSize = 4+"em";
+        lettreT.style.paddingLeft=50+"px";
+
+
+
+        var temp = document.getElementById("lettre");
+        temp = motChoisis[i];
+        console.log(temp);
+
+    }}
+
+
+
+function lettretrouvee(){
+
+    var user = document.getElementById("text").value;
+
+
+    for (var i = 0;i<motChoisis.length;i++){
+
+        if (user == motChoisis[i]){
+
+            document.getElementById("lettre" + i).innerHTML = motChoisis[i];
+            document.getElementById('lettre'+i).style.backgroundColor="white";
+            document.getElementById('lettre'+i).style.animation ="dd 2s";
+
+
+            test++;
+            console.log("incrementation: "+test);
         }
-        else{
-            alert("entrer une seul lettre");
-        }
+
+
+
 
     }
 
-  function comparerLettre() {
-
-      var resultat = document.getElementById("resultat");
-      var user = document.getElementById('text').value;
-
-      for(var i =0; i< motChoisis.length;i++){
-
-      var lettreT=document.createElement('span');
-      document.getElementById('resultat').appendChild(lettreT);
-      lettreT.id= "lettre"+i;
-      lettreT.style.border = "outset red";
-      lettreT.style.display ="inline-block";
-      lettreT.style.width =80+"px";
-      lettreT.style.height =80+"px";
-      lettreT.style.fontSize = 4+"em";
-      lettreT.style.paddingLeft=50+"px";
-
-
-
-     var temp = document.getElementById("lettre");
-    temp = motChoisis[i];
-    console.log(temp);
-
-  }}
+    if(test == 0){
+        document.getElementById('info').innerHTML=" la lettre "+user+" ne fait pas partis du mot";
+    }
+    else{
+        document.getElementById('info').innerHTML="vous avez trouver la lettre : "+user;
+    }
+    if(test == 0){
+        vie--;
+    }
+    else
+    {
+        test=0;
+        console.log("test raz" +test);
+    }
+    document.getElementById('vie').innerText = "vie: "+ vie;
+    if(vie < 1) {
+        document.getElementById('vie').innerHTML = "vie: 0";
+        document.getElementById('WinorLose').innerHTML = "vous avez perdu le mot etait :" + motChoisis;
+        document.getElementById('text').style.visibility = "hidden";
+    }
 
 
+}
 
-  function lettretrouvee(){
+function gagner(){
+    var retour = 1;
+    var count = 0;
 
-        var user = document.getElementById("text").value;
-        document.getElementById('vie').innerText = "vie: "+ vie;
+    for (var i=0;i<motChoisis.length;i++){
 
-        for (var i = 0;i<motChoisis.length;i++){
-
-            if (user == motChoisis[i]){
-
-                document.getElementById("lettre" + i).innerHTML = motChoisis[i];
-                document.getElementById("lettre" + i).style.border="inset red";
-                document.getElementById('lettre'+i).style.animation ="dd 2s";
-                document.getElementById('info').innerHTML ="vous avez trouver la lettre : "+user;
-                test++;
-
+        if (document.getElementById('Lettre' + i).innerHTML ===""){
+            count++;
+        }
+        if(count >0)
+        {
+            retour = 0;
+        }else{
+            document.getElementById('WinorLose').innerHTML="Bravo, vous avez trouver le mot";
+            retour = 1;
+        }
             }
-
-
-
-        }
-      if(test ==0){
-          vie--;
-      }
-      if(vie < 0) {
-          document.getElementById('vie').innerHTML = "vie: 0";
-          document.getElementById('WinorLose').innerHTML = "vous avez perdu le mot etait :" + motChoisis;
-          document.getElementById('text').style.visibility = "hidden";
-    }
-
-
-
-
-
-
-
-
-      }
-
-
-document.getElementById('vie').innerHTML="vie: "+vie;
-
+            return retour;
+}
 
 
 comparerLettre();
+document.getElementById('ok').addEventListener("click", function () {
 
-    document.getElementById('ok').addEventListener("click", function () {
-
-        entrerLettre();
-        lettretrouvee();
-
+    entrerLettre();
+    lettretrouvee();
 
 });
 
 
- /*   document.getElementById('facile').addEventListener("click", function () {
-
-
-
-
+/*   document.getElementById('facile').addEventListener("click", function () {
 });
-
-    document.getElementById('moyen').addEventListener("click", function () {
-
-
-
-
+   document.getElementById('moyen').addEventListener("click", function () {
 });
-
-    document.getElementById('difficile').addEventListener("click", function () {
-
-
-
-
+   document.getElementById('difficile').addEventListener("click", function () {
 });*/
