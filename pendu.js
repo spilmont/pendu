@@ -1,7 +1,7 @@
 var Mots= ["ordinateur","clavier","ecran"];
 var vie = 10;
 var test =0;
-
+var lettreVerifie =0;
 
     // genere un mot aleatoirement
     var motsAlea = Math.random()*Mots.length;
@@ -64,7 +64,7 @@ var test =0;
                 document.getElementById("lettre" + i).style.border="inset red";
                 document.getElementById('lettre'+i).style.animation ="dd 2s";
                 document.getElementById('info').innerHTML ="vous avez trouver la lettre : "+user;
-
+                lettreVerifie++;
                 test++;
                 console.log(test);
             }
@@ -91,7 +91,9 @@ var test =0;
     }
 
 
-
+    if(lettreVerifie == motChoisis.length){
+        document.getElementById('WinorLose').innerHTML="Bravo, vous avez trouver le mot";
+    }
 
 
 
